@@ -1,25 +1,49 @@
+// schema.js
+
 export default {
   name: 'carousel',
-  title: 'Carousel',
   type: 'document',
+  title: 'Carousel',
   fields: [
     {
       name: 'title',
-      title: 'Carousel Title',
       type: 'string',
+      title: 'Title',
     },
     {
-      name: 'description',
-      title: 'Carousel Description',
-      type: 'string',
-    },
-    {
-      name: 'image',
-      title: 'Carousel Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      name: 'images',
+      type: 'array',
+      title: 'Images',
+      of: [
+        {
+          name: 'carouselImage',
+          type: 'object',
+          title: 'Carousel Image',
+          fields: [
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Caption',
+            },
+            {
+              name: 'imageFile',
+              type: 'image',
+              title: 'Image File',
+              options: {
+                hotspot: true,
+              },
+            },
+            {
+              name: 'imageFileMobile',
+              type: 'image',
+              title: 'Image File (Mobile)',
+              options: {
+                hotspot: true,
+              },
+            },
+          ],
+        },
+      ],
     },
   ],
 }
