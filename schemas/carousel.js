@@ -1,5 +1,3 @@
-// schema.js
-
 export default {
   name: 'carousel',
   type: 'document',
@@ -43,16 +41,32 @@ export default {
                       title: 'Resolution',
                       options: {
                         list: [
-                          {title: '640', value: '640w'},
-                          {title: '768', value: '768w'},
-                          {title: '1024', value: '1024w'},
-                          {title: '1280', value: '1280w'},
+                          {title: '640', value: '640'},
+                          {title: '768', value: '768'},
+                          {title: '1024', value: '1024'},
+                          {title: '1280', value: '1280'},
                         ],
                       },
                     },
                   ],
                 },
               ],
+              preview: {
+                select: {
+                  imageUrl: 'asset.url',
+                  resolutions: 'resolutions',
+                },
+                prepare(selection) {
+                  const {imageUrl, resolutions} = selection
+                  const resolution = resolutions && resolutions.length > 0 ? resolutions[0] : null
+                  const url = imageUrl && resolution ? `${imageUrl}?w=${resolution}w` : imageUrl
+
+                  return {
+                    title: url,
+                    imageUrl: url,
+                  }
+                },
+              },
             },
           ],
         },
