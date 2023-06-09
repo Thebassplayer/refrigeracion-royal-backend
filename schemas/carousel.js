@@ -32,14 +32,27 @@ export default {
               options: {
                 hotspot: true,
               },
-            },
-            {
-              name: 'imageFileMobile',
-              type: 'image',
-              title: 'Image File (Mobile)',
-              options: {
-                hotspot: true,
-              },
+              fields: [
+                {
+                  name: 'resolutions',
+                  type: 'array',
+                  title: 'Resolutions',
+                  of: [
+                    {
+                      type: 'string',
+                      title: 'Resolution',
+                      options: {
+                        list: [
+                          {title: '640', value: '640w'},
+                          {title: '768', value: '768w'},
+                          {title: '1024', value: '1024w'},
+                          {title: '1280', value: '1280w'},
+                        ],
+                      },
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
